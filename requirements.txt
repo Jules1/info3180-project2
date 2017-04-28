@@ -6,3 +6,4 @@ requests
 flask-admin
 flask-login
 Flask-WTF
+psycopg2

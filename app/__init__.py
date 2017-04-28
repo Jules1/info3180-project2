@@ -9,6 +9,7 @@ app.config['SECRET_KEY'] = 'jj3r84'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite'
 app.config['SQLALCHEMY_ECHO'] = True
+app.config['USER_UPLOAD_FOLDER'] = "./app/static/uploads"
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()

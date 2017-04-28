@@ -5,7 +5,8 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app
+from app import app, db
+from Models import User
 from flask_wtf import FlaskForm
 from flask import render_template, request, redirect, url_for, jsonify,flash
 from flask_login import login_user, logout_user, current_user, login_required, LoginManager
@@ -14,9 +15,6 @@ from bs4 import BeautifulSoup
 import requests
 import urlparse
 import thumbScrape
-
-from app import db
-from app.Models import User
 
 @app.route('/')
 def home():
@@ -105,11 +103,17 @@ def wishlist(userid):
     else:
         return redirect(url_for('home'))
 
-#@app.route('/api/thumbnails', methods=['GET'])
-
-#@app.route('api/users/{userid}/wishlist/{itemid}', methods = ['DELETE'])
-
-
+@app.route('/api/thumbnails', methods=['GET'])
+@login_required
+def thumbnails(url):
+    return jsonify(error=None, message="Success", thumbnails=thumbScrape.returnImages(url))
+    
+@app.route('/api/users/{userid}/wishlist/{itemid}', methods = ['DELETE'])
+@login_required
+def delete():
+   pass
+   
+   
 ###
 # The functions below should be applicable to all Flask apps.
 ###
