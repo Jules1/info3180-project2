@@ -1,0 +1,8 @@
+flask
+beautifulsoup4
+wtforms
+Flask-SQLAlchemy
+requests
+flask-admin
+flask-login
+Flask-WTF
